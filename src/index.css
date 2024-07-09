@@ -1,13 +1,41 @@
+/* 피플퍼스트투쟁체 */
+@font-face {
+    font-family: "PeoplefirstFightingTTF";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2406-2@1.0/PeoplefirstFightingTTF.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 피플퍼스트또박체 */
+@font-face {
+    font-family: "PeoplefirstNeatLoudTTF";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2406-2@1.0/PeoplefirstNeatLoudTTF.woff2")
+        format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 나눔 명조 */
+@import url("//fonts.googleapis.com/earlyaccess/nanummyeongjo.css");
+
+/* 프리탠다드 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: "Pretendard Variable", BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+p {
+    margin: 0;
 }
