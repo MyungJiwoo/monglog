@@ -1,6 +1,7 @@
 import React from "react";
+import { Container } from "../styles/MainPageStyled";
 
 const MainPage = () => {
-    return <h1>heeloo</h1>;
+    return <Container></Container>;
 };
 export default MainPage;
