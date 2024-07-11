@@ -4,6 +4,9 @@ import MainPage from "./pages/MainPage";
 import PostsPage from "./pages/PostsPage";
 import DetailPage from "./pages/DetailPage";
 import AboutPage from "./pages/AboutPage";
+import WritePage from "./pages/WritePage";
+import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/LogoutPage";
 import Nav from "./components/Nav";
 
 const App: React.FC = () => {
@@ -15,6 +18,9 @@ const App: React.FC = () => {
                 <Route path="/posts" Component={PostsPage} />
                 <Route path="/detail" Component={DetailPage} />
                 <Route path="/about" Component={AboutPage} />
+                <Route path="/write" Component={WritePage} />
+                <Route path="/login" Component={LoginPage} />
+                <Route path="/logout" Component={LogoutPage} />
                 <Route path="/" Component={MainPage} />
             </Routes>
         </Router>
