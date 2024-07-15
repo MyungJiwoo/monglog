@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container } from "../styles/DetailPageStyled";
+import { StyledLink } from "../styles/StyledLink";
 
 import { ref, child, get } from "firebase/database";
 import { db } from "../firebase/firebase";
@@ -10,7 +11,7 @@ interface BlogItem {
     title: string;
     blog: string;
     uuid: string;
-    createAt: string;
+    createdAt: string;
 }
 
 const DetailPage = () => {
@@ -55,11 +56,13 @@ const DetailPage = () => {
                     data-color-mode="light"
                     style={{ padding: 15 }}
                 >
-                    <h2>{item.title}</h2>
-                    <MDEditor.Markdown
+                    <StyledLink to={`/read/${item.uuid}`}>
+                        <h2>{item.title}</h2>
+                    </StyledLink>
+                    {/* <MDEditor.Markdown
                         style={{ padding: 10 }}
                         source={item.blog}
-                    />
+                    /> */}
                 </div>
             ))}
         </Container>

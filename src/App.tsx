@@ -7,6 +7,7 @@ import AboutPage from "./pages/AboutPage";
 import WritePage from "./pages/WritePage";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
+import ReadPage from "./pages/ReadPage";
 import Nav from "./components/Nav";
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
                 <Route path="/write" Component={WritePage} />
                 <Route path="/login" Component={LoginPage} />
                 <Route path="/logout" Component={LogoutPage} />
+                <Route path="/read/:uuid" Component={ReadPage} />
                 <Route path="/" Component={MainPage} />
             </Routes>
         </Router>
