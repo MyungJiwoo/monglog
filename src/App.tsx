@@ -17,7 +17,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" Component={MainPage} />
                 <Route path="/posts" Component={PostsPage} />
-                <Route path="/detail" Component={DetailPage} />
+                <Route path="/detail/:uuid" Component={DetailPage} />
                 <Route path="/about" Component={AboutPage} />
                 <Route path="/write" Component={WritePage} />
                 <Route path="/login" Component={LoginPage} />

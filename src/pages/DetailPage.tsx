@@ -1,70 +1,57 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Container } from "../styles/DetailPageStyled";
-import { StyledLink } from "../styles/StyledLink";
 
-import { ref, child, get } from "firebase/database";
-import { db } from "../firebase/firebase";
+import { BlogItem } from "../props/BlogProp";
+
+import { getDatabase, ref, child, get } from "firebase/database";
 
 import MDEditor from "@uiw/react-md-editor";
 
-interface BlogItem {
-    title: string;
-    blog: string;
-    uuid: string;
-    createdAt: string;
-}
-
 const DetailPage = () => {
-    const dbRef = ref(db);
-    const [titleList, setTitleList] = useState<BlogItem[]>([]);
-    const [blogList, setBlogList] = useState<BlogItem[]>([]);
+    const { uuid } = useParams<{ uuid: string }>();
+
+    const [blog, setBlog] = useState<BlogItem | null>(null);
 
     useEffect(() => {
-        console.log("실행");
-        const fetchInterest = async () => {
-            get(child(dbRef, "/blog"))
-                .then((snapshot) => {
-                    if (snapshot.exists()) {
-                        const dataArray = Object.keys(snapshot.val()).map(
-                            (key) => snapshot.val()[key]
-                        );
-                        console.log(dataArray);
-                        setBlogList(dataArray);
+        const dbRef = ref(getDatabase());
+
+        get(child(dbRef, "/blog"))
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    const dataArray: BlogItem[] = Object.keys(
+                        snapshot.val()
+                    ).map((key) => snapshot.val()[key]);
+
+                    console.log(dataArray);
+
+                    console.log(uuid);
+
+                    const filteredBlog = dataArray.find(
+                        (blogItem) => blogItem.uuid === uuid
+                    );
+                    if (filteredBlog) {
+                        setBlog(filteredBlog);
                     } else {
-                        console.log("No data available");
+                        console.log("No matching blog found");
                     }
-                })
-                .catch((error) => {
-                    console.error(error);
-                });
-        };
+                } else {
+                    console.log("No data available");
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [uuid]);
 
-        fetchInterest();
-    }, []);
-
-    const read = () => {
-        console.log(blogList);
-    };
+    if (!blog) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <Container>
-            <button onClick={read}>read</button>
-            {blogList.map((item, index) => (
-                <div
-                    key={index}
-                    className="markdownDiv"
-                    data-color-mode="light"
-                    style={{ padding: 15 }}
-                >
-                    <StyledLink to={`/read/${item.uuid}`}>
-                        <h2>{item.title}</h2>
-                    </StyledLink>
-                    {/* <MDEditor.Markdown
-                        style={{ padding: 10 }}
-                        source={item.blog}
-                    /> */}
-                </div>
-            ))}
+            <h1>{blog.title}</h1>
+            <MDEditor.Markdown style={{ padding: 10 }} source={blog.blog} />
         </Container>
     );
 };
