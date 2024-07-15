@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container } from "../styles/WritePageStyeld";
 
 import { ref, set } from "firebase/database";
@@ -9,6 +10,7 @@ import { getAuth } from "firebase/auth";
 import MDEditor from "@uiw/react-md-editor";
 
 function WritePage() {
+    const navigate = useNavigate();
     const auth = getAuth();
     const user = auth.currentUser;
     const [blog, setBlog] = useState("");
@@ -34,6 +36,7 @@ function WritePage() {
             });
             setTitle("");
             setBlog("");
+            navigate("/posts");
             console.log("Data written successfully!");
         } catch (error) {
             console.error("Error writing data: ", error);
