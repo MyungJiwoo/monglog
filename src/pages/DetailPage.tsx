@@ -7,6 +7,7 @@ import { db } from "../firebase/firebase";
 import MDEditor from "@uiw/react-md-editor";
 
 interface BlogItem {
+    title: string;
     blog: string;
     uuid: string;
     createAt: string;
@@ -14,6 +15,7 @@ interface BlogItem {
 
 const DetailPage = () => {
     const dbRef = ref(db);
+    const [titleList, setTitleList] = useState<BlogItem[]>([]);
     const [blogList, setBlogList] = useState<BlogItem[]>([]);
 
     useEffect(() => {
@@ -53,6 +55,7 @@ const DetailPage = () => {
                     data-color-mode="light"
                     style={{ padding: 15 }}
                 >
+                    <h2>{item.title}</h2>
                     <MDEditor.Markdown
                         style={{ padding: 10 }}
                         source={item.blog}

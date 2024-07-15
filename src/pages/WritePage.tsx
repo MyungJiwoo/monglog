@@ -12,20 +12,27 @@ function WritePage() {
     const auth = getAuth();
     const user = auth.currentUser;
     const [blog, setBlog] = useState("");
+    const [title, setTitle] = useState("");
+
+    const handlTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(event.target.value);
+    };
 
     const handleBlogChange = (value: string | undefined) => {
         setBlog(value || ""); // Markdown 에디터에서 입력한 내용을 상태에 저장
     };
 
     const writeData = async () => {
-        console.log(blog);
+        // console.log(blog);
         try {
             const uuid = uid();
             await set(ref(db, `blog/${uuid}`), {
+                title: title,
                 blog: blog,
                 uuid,
                 createdAt: new Date().toISOString(),
             });
+            setTitle("");
             setBlog("");
             console.log("Data written successfully!");
         } catch (error) {
@@ -46,6 +53,13 @@ function WritePage() {
     return (
         <Container>
             <h1>글 작성</h1>
+
+            <input
+                type="text"
+                placeholder="제목을 입력하세요."
+                value={title}
+                onChange={handlTitleChange}
+            />
 
             <div className="markarea">
                 <div data-color-mode="light">
