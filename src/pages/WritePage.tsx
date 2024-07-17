@@ -15,9 +15,16 @@ function WritePage() {
     const user = auth.currentUser;
     const [blog, setBlog] = useState("");
     const [title, setTitle] = useState("");
+    const [subTitle, setSubTitle] = useState("");
 
-    const handlTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
+    };
+
+    const handleSubTitleChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
+        setSubTitle(event.target.value);
     };
 
     const handleBlogChange = (value: string | undefined) => {
@@ -30,6 +37,7 @@ function WritePage() {
             const uuid = uid();
             await set(ref(db, `blog/${uuid}`), {
                 title: title,
+                subTitle: subTitle,
                 blog: blog,
                 uuid,
                 createdAt: new Date().toISOString(),
@@ -61,7 +69,14 @@ function WritePage() {
                 type="text"
                 placeholder="제목을 입력하세요."
                 value={title}
-                onChange={handlTitleChange}
+                onChange={handleTitleChange}
+            />
+
+            <input
+                type="text"
+                placeholder="미리보기를 입력하세요."
+                value={subTitle}
+                onChange={handleSubTitleChange}
             />
 
             <div className="markarea">

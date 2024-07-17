@@ -1,16 +1,23 @@
 import React from "react";
 import { PostCard as PostCardStyle } from "../styles/PostCardStyeld";
 import { StyledLink } from "../styles/StyledLink";
+import { blogItem } from "../props/BlogProp";
 
-const PostCard = () => {
+const PostCard: React.FC<blogItem> = ({ blogItem }) => {
     return (
-        <PostCardStyle>
-            <div className="img"></div>
-            <div className="titleBox">
-                <p className="post_title">제목이 들어갈 자리입니다.</p>
-                <p className="post_preview">미리보기가 들어갈 자리입니다.</p>
-            </div>
-        </PostCardStyle>
+        <StyledLink to={`/detail/${blogItem.uuid}`}>
+            <PostCardStyle>
+                <div className="img"></div>
+                <div className="titleBox">
+                    <p className="post_title">{blogItem.title}</p>
+                    <p className="post_preview">
+                        {blogItem.subTitle.length > 40
+                            ? blogItem.subTitle.slice(0, 40) + "..."
+                            : blogItem.subTitle}
+                    </p>
+                </div>
+            </PostCardStyle>
+        </StyledLink>
     );
 };
 export default PostCard;
