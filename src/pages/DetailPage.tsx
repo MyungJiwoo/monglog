@@ -7,6 +7,7 @@ import { BlogItem } from "../props/BlogProp";
 import { getDatabase, ref, child, get } from "firebase/database";
 
 import MDEditor from "@uiw/react-md-editor";
+import { RiDoubleQuotesL } from "react-icons/ri";
 
 const DetailPage = () => {
     const { uuid } = useParams<{ uuid: string }>();
@@ -50,8 +51,14 @@ const DetailPage = () => {
 
     return (
         <Container>
-            <h1>{blog.title}</h1>
-            <MDEditor.Markdown style={{ padding: 10 }} source={blog.blog} />
+            <div className="blogBox">
+                <div className="titleBox">
+                    <RiDoubleQuotesL className="icon" />
+                    <p className="title">{blog.title}</p>
+                </div>
+
+                <MDEditor.Markdown source={blog.blog} className="content" />
+            </div>
         </Container>
     );
 };
