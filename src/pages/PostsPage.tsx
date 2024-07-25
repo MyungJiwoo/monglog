@@ -3,6 +3,7 @@ import { Container } from "../styles/PostsPageStyled";
 import { StyledLink } from "../styles/StyledLink";
 
 import { BlogItem } from "../props/BlogProp";
+import PostCard from "../components/PostCard";
 
 import { ref, child, get } from "firebase/database";
 import { db } from "../firebase/firebase";
@@ -35,18 +36,18 @@ const PostsPage = () => {
 
     return (
         <Container>
-            {blogList.map((item, index) => (
-                <div
-                    key={index}
-                    className="markdownDiv"
-                    data-color-mode="light"
-                    style={{ padding: 15 }}
-                >
-                    <StyledLink to={`/read/${item.uuid}`}>
-                        <h2>{item.title}</h2>
-                    </StyledLink>
-                </div>
-            ))}
+            <div className="blogBox">
+                {blogList.map((item, index) => (
+                    <div
+                        key={index}
+                        className="markdownDiv"
+                        data-color-mode="light"
+                        style={{ padding: 15 }}
+                    >
+                        <PostCard blogItem={item} />
+                    </div>
+                ))}
+            </div>
         </Container>
     );
 };
