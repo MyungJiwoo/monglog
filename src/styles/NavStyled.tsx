@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 100vw;
     height: 10vh;
+    z-index: 1;
 
     display: flex;
     justify-content: center;
@@ -22,7 +23,6 @@ export const Container = styled.div`
         font-family: "PeoplefirstFightingTTF";
         font-size: 2rem;
         letter-spacing: 3px;
-        font-weight: bold;
     }
 
     .links {
