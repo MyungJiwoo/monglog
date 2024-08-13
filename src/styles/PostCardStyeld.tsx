@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PostCard = styled.div`
     width: 20vw;
 
-    border: 1px solid #f2f2f2;
+    /* border: 1px solid #f2f2f2; */
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.05));
 
     cursor: pointer;
