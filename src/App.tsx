@@ -8,6 +8,7 @@ import WritePage from "./pages/WritePage";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import Nav from "./components/Nav";
+import AutoSave from "./pages/AutoSavePage";
 
 const App: React.FC = () => {
     return (
@@ -21,7 +22,7 @@ const App: React.FC = () => {
                 <Route path="/write" Component={WritePage} />
                 <Route path="/login" Component={LoginPage} />
                 <Route path="/logout" Component={LogoutPage} />
-                <Route path="/" Component={MainPage} />
+                <Route path="/autosave" Component={AutoSave} />
             </Routes>
         </Router>
     );
