@@ -52,6 +52,7 @@ const DetailPage = () => {
     return (
         <Container>
             <div className="blogBox">
+                {blog.imageUrl && <img src={blog.imageUrl} alt="썸네일" />}
                 <div className="titleBox">
                     <RiDoubleQuotesL className="icon" />
                     <p className="title">{blog.title}</p>

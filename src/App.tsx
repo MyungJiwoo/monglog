@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import PostsPage from "./pages/PostsPage";
@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/LogoutPage";
 import Nav from "./components/Nav";
 import AutoSave from "./pages/AutoSavePage";
+import CreatePage from "./pages/CreatePage";
 
 const App: React.FC = () => {
     return (
@@ -23,6 +24,7 @@ const App: React.FC = () => {
                 <Route path="/login" Component={LoginPage} />
                 <Route path="/logout" Component={LogoutPage} />
                 <Route path="/autosave" Component={AutoSave} />
+                <Route path="/create" Component={CreatePage} />
             </Routes>
         </Router>
     );

@@ -17,6 +17,14 @@ export const PostCard = styled.div`
         border-radius: 1rem 1rem 0 0;
     }
 
+    img {
+        width: inherit;
+        height: 20vh;
+
+        background-color: #505050;
+        border-radius: 1rem 1rem 0 0;
+    }
+
     .titleBox {
         width: calc(inherit - 2rem);
         padding: 1rem;

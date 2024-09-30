@@ -4,6 +4,7 @@ export interface BlogItem {
     blog: string;
     uuid: string;
     createdAt: string;
+    imageUrl: string;
 }
 
 export interface blogItem {
